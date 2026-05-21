@@ -1,0 +1,14 @@
+services:
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./beszel_agent_data:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      LISTEN: 45876
+      KEY: "REPLACE_WITH_VALUE_GENERATED_BY_BESZEL_HUB"
+      TOKEN: "REPLACE_WITH_VALUE_GENERATED_BY_BESZEL_HUB"
+      HUB_URL: "https://monitor.yourdomain.com"
